@@ -39,9 +39,9 @@ dependencies {
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.2.2'
 //	compile group: 'org.springframework.kafka', name: 'spring-kafka', version: '1.0.2.RELEASE'
-	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.1'
-  	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.1'
-	
+//	compile group: 'org.apache.kafka', name: 'kafka_2.10', version: '0.8.0'
+//	compile 'org.springframework.kafka:spring-kafka:2.2.0.RELEASE'
+
 //test
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation('org.springframework.batch:spring-batch-test')

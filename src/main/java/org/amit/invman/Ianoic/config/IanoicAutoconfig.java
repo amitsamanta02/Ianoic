@@ -3,6 +3,8 @@ package org.amit.invman.Ianoic.config;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -16,21 +18,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class IanoicAutoconfig {
 	
+	public static Logger log = LoggerFactory.getLogger(IanoicAutoconfig.class);
+    
     @Bean
     public DataSource dataSource()
     {
-    	BasicDataSource ds = new BasicDataSource();
-    	ds.setUrl("jdbc:mysql://localhost:3306/userinfo");
-    	ds.setUsername("rootuser");
-    	ds.setPassword("Madhabi@1989");
-    	ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-    	System.out.println("DataSource:"+ds);
-    	return ds;
+    	BasicDataSource dsm = new BasicDataSource();
+    	dsm.setUrl("jdbc:mysql://localhost:3306/MasterProduct");
+    	dsm.setUsername("root");
+    	dsm.setPassword("Madhabi@1989");
+    	dsm.setDriverClassName("com.mysql.cj.jdbc.Driver");
+    	log.info("ds-product"+dsm);
+    	return dsm;
     }
     
-    @Bean
-    public JdbcTemplate jdbcTemplat(DataSource ds){
-    	System.out.println("Creating JDBC template with new instances");
-    	return new JdbcTemplate(ds);
-    }
 }

@@ -1,5 +1,8 @@
 package org.amit.invman.Ianoic.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class UserSignUPDetail {
 	
 	private String userId;

@@ -1,4 +1,4 @@
-package org.amit.invman.Ianoic.Controller;
+package org.amit.invman.Ianoic.controller;
 
 import org.amit.invman.Ianoic.model.ReturnMessage;
 import org.amit.invman.Ianoic.model.ShopRegistration;
@@ -6,6 +6,7 @@ import org.amit.invman.Ianoic.service.IuserRegistration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,8 +21,8 @@ public class SignController {
     @Autowired
     private ReturnMessage returnMessage;
     
-   /* @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;*/
+   // @Autowired
+   // private KafkaTemplate<String, String> kafkaTemplate;
 
     @GetMapping("/shopdetail/{shopID}")
     public ReturnMessage getShopbyID(@PathVariable("shopID") String shopID){
@@ -67,12 +68,12 @@ public class SignController {
         return returnMessage;
      }
     
-    /*@RequestMapping("/kafka/{datastream}")
+   /* @RequestMapping("/kafka/{datastream}")
     public String kafkaProducerController(@PathVariable("datastream") final String data){
     	String topicName = "testtopic";
     	log.info("Kafka Message:"+data);
     	log.info("Kafka topic"+topicName);
-    	kafkaTemplate.send(topicName, data);
+    	//kafkaTemplate.send(topicName, data);
     	
 		return null;
     	

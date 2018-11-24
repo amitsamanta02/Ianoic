@@ -1,8 +1,5 @@
 package org.amit.invman.Ianoic.dao;
 
-
-import javax.sql.DataSource;
-
 import org.amit.invman.Ianoic.config.IanoicAutoconfig;
 import org.amit.invman.Ianoic.model.ShopRegistration;
 import org.slf4j.LoggerFactory;
@@ -17,7 +14,7 @@ public class UserInfoDAO{
 	
 	public boolean getUserInfoDAO(String shopID){	
 		
-		final String inqq = "select count(*) from shop_basic_info where org_id = ?";
+		final String inqq = "select count(*) from ShopMaster where org_id = ?";
 		log.info("Sql:"+inqq);
 		JdbcTemplate jdbc = new JdbcTemplate(new IanoicAutoconfig().dataSource());
 		
@@ -31,7 +28,7 @@ public class UserInfoDAO{
 	}
 	
 	public boolean registerShopDetailDAO(ShopRegistration shopRegistration){
-		final String insertq = "insert into shop_basic_info(org_id,gstin_no,country,shop_name,contact_phonno,contact_email,shop_detail)"+
+		final String insertq = "insert into ShopMaster(org_id,gstin_no,country,shop_name,contact_phonno,contact_email,shop_detail)"+
 				"values ("+"'"+shopRegistration.getOrgId()+"'"+
 					    ","+"'"+shopRegistration.getGstinNo()+"'"+
 					    ","+"'"+shopRegistration.getCountry()+"'"+
