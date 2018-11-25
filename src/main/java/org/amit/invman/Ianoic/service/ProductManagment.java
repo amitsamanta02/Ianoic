@@ -3,6 +3,7 @@ package org.amit.invman.Ianoic.service;
 import org.amit.invman.Ianoic.dao.ProductManagmentDAO;
 import org.amit.invman.Ianoic.model.prd.ItemListMaster;
 import org.amit.invman.Ianoic.model.prd.ProductMaster;
+import org.amit.invman.Ianoic.util.ConstantVar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +31,13 @@ public class ProductManagment implements IproductManagment{
 	@Override
 	public boolean addNewItems(ItemListMaster itemListMaster) {
 		//Add logic to add a new item to the list of item.
-		log.info("Items list:"+itemListMaster);
-		productManagmentDAO.addItemToDB(itemListMaster);
-		
-		return false;
+		String returnval = productManagmentDAO.addItemToDB(itemListMaster);
+		log.info("DB Response:"+returnval);
+	//Checking insert of new item is success or not.
+		if(returnval.equalsIgnoreCase("SUCCESS"))
+			return true;
+		else
+			return false;
 	}
 	
 

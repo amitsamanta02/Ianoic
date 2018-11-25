@@ -10,7 +10,18 @@ public class ItemListMaster {
 
 	private int itemCount;
 	
+	private String userId;
+	
 	private ArrayList<ItemMaster> itemListMaster = new ArrayList<ItemMaster>();
+
+	
+	public String getUserId() {
+		return userId;
+	}
+	@JsonProperty("userid")
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	public int getItemCount() {
 		return itemCount;

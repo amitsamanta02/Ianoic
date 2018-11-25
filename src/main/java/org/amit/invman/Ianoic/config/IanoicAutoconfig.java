@@ -9,11 +9,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 @Configuration
-@ComponentScan("org.amit.inman.Ianoic")
+@ComponentScan("org.amit.invman.Ianoic")
 @PropertySource(value = { "classpath:application.properties" })
 @Component
 public class IanoicAutoconfig {

@@ -41,6 +41,8 @@ dependencies {
 //	compile group: 'org.springframework.kafka', name: 'spring-kafka', version: '1.0.2.RELEASE'
 //	compile group: 'org.apache.kafka', name: 'kafka_2.10', version: '0.8.0'
 //	compile 'org.springframework.kafka:spring-kafka:2.2.0.RELEASE'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-cache', version: '2.1.0.RELEASE'
+	compile group: 'net.sf.ehcache', name: 'ehcache-core', version: '2.4.6'
 
 //test
 	testImplementation('org.springframework.boot:spring-boot-starter-test')

@@ -46,8 +46,19 @@ public class ProductController {
 	@PostMapping("/additem")
 	public ReturnMessage itemAddition(@RequestBody ItemListMaster itemListMaster){
 		log.info("userInput:"+itemListMaster);
-		boolean flag  = iproductManagment.addNewItems(itemListMaster);
-		return null;
+		if(iproductManagment.addNewItems(itemListMaster) == true){
+			returnMessage.setRcCode(00);returnMessage.setReasonCode("00");
+			returnMessage.setRsMessage("Item added successfully.");
+            returnMessage.setReasonMessage("success");
+		}
+		else
+		{
+			 returnMessage.setRcCode(8);returnMessage.setReasonCode("09");
+	         returnMessage.setRsMessage("product addition fail!!");
+	         returnMessage.setReasonMessage("not success");
+		}
+		
+		return returnMessage;
 	}
 
 }
