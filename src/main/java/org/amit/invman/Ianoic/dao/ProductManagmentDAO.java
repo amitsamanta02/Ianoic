@@ -1,6 +1,8 @@
 package org.amit.invman.Ianoic.dao;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+
 import org.amit.invman.Ianoic.config.IanoicAutoconfig;
 import org.amit.invman.Ianoic.model.prd.ItemListMaster;
 import org.amit.invman.Ianoic.model.prd.ItemMaster;
@@ -9,6 +11,7 @@ import org.amit.invman.Ianoic.util.DBResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -90,6 +93,26 @@ public class ProductManagmentDAO {
 			return DBResponse.SUCCESS.toString();
 		else 
 			return DBResponse.INSERTFAIL.toString();
+	}
+
+//Search item list by name for typed ahead search algorithm.
+	
+	@Cacheable(value="itemscache",key="#itemName")
+	public ArrayList<String> getItemListByName(String name){
+		JdbcTemplate jdbcTemPlate = new JdbcTemplate(new IanoicAutoconfig().dataSource());
+		ArrayList<String> itemNameList = new ArrayList<String>();
+		name = name.trim(); //cleaning all sapac and other character.
+		
+		final String itemsearchQuery = "select itemName from MasterProduct.ItemMaster "
+				+ "where ItemName like "+ name+"%'";
+		SqlRowSet rowSet = jdbcTemPlate.queryForRowSet(itemsearchQuery);
+		
+		while(rowSet.next() == true){
+			itemNameList.add(rowSet.getString("itemName"));
+			log.info("item name fetched:"+rowSet.getString("itemName"));
+		}
+		
+		return itemNameList;
 	}
 
 }
